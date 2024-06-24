@@ -5,5 +5,5 @@ FROM ubuntu:22.04
 RUN apt-get update 
 RUN apt-get upgrade -y
 
-# Set cmd to echo Hello, World! at container start
+# Set cmd to echo "Hello, World!" at container start
 CMD ["echo", "Hello, World!"]
