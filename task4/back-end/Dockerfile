@@ -1,22 +1,24 @@
 # Use Ubuntu 22.04 as base image
 FROM ubuntu:22.04
 
-# Update package lists and install dependencies
-RUN apt-get update
-RUN apt-get install -y python3 python3-pip
-RUN apt-get clean
+# Update pkg lists, upgrade existing pkgs, install dependencies
+RUN apt-get update \
+    && apt-get upgrade -y \
+        python3 \
+        python3-pip \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
-# Create and set working directory
+# Set working directory
 WORKDIR /app
 
-# Copy application files into the container
+# Copy app files into container
 COPY api.py /app/api.py
 
 # Install Flask and Flask-cors
-RUN pip3 install flask 
-RUN pip3 install flask-cors
+RUN pip3 install flask flask-cors
 
-# Expose port 5252 to outside world
+# Expose port 5252
 EXPOSE 5252
 
 # Run Flask application

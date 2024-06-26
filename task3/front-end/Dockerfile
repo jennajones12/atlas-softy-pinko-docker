@@ -2,13 +2,10 @@
 FROM nginx:latest
 
 # Cp front-end files to appropriate dir in Docker image
-COPY . /var/www/html/softy-pinko-front-end
+COPY ./softy-pinko-front-end var/www/html/softy-pinko-front-end
 
 # Cp Nginx config file to appropriate dir
-COPY softy-pinko-front-end.conf /etc/nginx/conf.d/default.conf
+COPY ./softy-pinko-front-end.conf /etc/nginx/conf.d/default.conf
 
 # Expose port
 EXPOSE 9000
-
-# Start Nginx at container launch
-CMD ["nginx", "-g", "daemon off;"]
