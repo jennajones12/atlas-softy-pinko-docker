@@ -1,8 +1,8 @@
 # Use latest version of Nginx
-FROM nginx
+FROM nginx:latest
 
 # Cp front-end files to appropriate dir in Docker image
-COPY ./softy-pinko-front-end /usr/www/html/softy-pinko-front-end
+COPY ./softy-pinko-front-end/. /usr/www/html/softy-pinko-front-end
 
 # Remove .git folder from the copied directory
 RUN rm -rf /usr/www/html/softy-pinko-front-end/.git
