@@ -14,8 +14,6 @@ services:
     image: softy-pinko-back-end:task5
     ports:
       - "9000:9000"
-    depends_on:
-      - back-end
 
   proxy:
     build:
@@ -26,3 +24,4 @@ services:
       - "80:80"
     depends_on:
       - front-end
+      - back-end
